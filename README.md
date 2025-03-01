@@ -1,4 +1,4 @@
-### Hive Employee and Department Data Analysis
+# Hive Employee and Department Data Analysis
 
 ## Project Overview
 
@@ -66,33 +66,33 @@ This project involves analyzing employee and department data using Apache Hive. 
   ```
 
 # 2. Creating Optimized Tables
-- Create an ORC-formatted table:
-  ```
-  CREATE TABLE employees (
-      emp_id INT,
-      name STRING,
-      age INT,
-      job_role STRING,
-      salary DOUBLE,
-      project STRING,
-      join_date STRING
-  )
-  STORED AS ORC;
-  ```
-- Create a partitioned table:
-  ```
-  CREATE TABLE employees_partitioned (
-      emp_id INT,
-      name STRING,
-      age INT,
-      job_role STRING,
-      salary DOUBLE,
-      project STRING,
-      join_date STRING
-  )
-  PARTITIONED BY (department STRING)
-  STORED AS ORC;
-  ```
+- Create Partitioned Table and Move Data
+```
+CREATE TABLE employees (
+    emp_id INT,
+    name STRING,
+    age INT,
+    job_role STRING,
+    salary DOUBLE,
+    project STRING,
+    join_date STRING
+)
+STORED AS ORC;
+
+ALTER TABLE employees ADD COLUMNS (department STRING);
+
+CREATE TABLE employees_partitioned (
+    emp_id INT,
+    name STRING,
+    age INT,
+    job_role STRING,
+    salary DOUBLE,
+    project STRING,
+    join_date STRING
+)
+PARTITIONED BY (department STRING)
+STORED AS ORC;
+```
 
 # Inserting Data into Partitioned Table
 ```
